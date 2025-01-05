@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainAI - The Future of Intelligence</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco para mejor contraste */
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.85);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .header {
+            background-color: rgba(0, 0, 102, 0.9); /* Dark Blue */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header img {
+            max-width: 200px; /* Aumentar tamaño de la imagen */
+            animation: float 3s ease-in-out infinite; /* Añadir animación */
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .header-content {
+            display: flex; /* Usar flexbox para centrar contenido */
+            flex-direction: column; /* Alinear elementos en columna */
+            align-items: center; /* Centrar elementos horizontalmente */
+            gap: 10px; /* Reducir espacio entre elementos */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+            letter-spacing: 2px;
+            animation: blink 2s infinite; /* Añadir animación al título */
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .navigation {
+            display: flex;
+            gap: 10px; /* Reducir espacio entre enlaces de navegación */
+        }
+
+        .navigation a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navigation a:hover {
+            background-color: #6600cc; /* Darker Purple */
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con opacidad */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #9933ff; /* Purple */
+            animation: colorChange 3s infinite; /* Añadir animación al subtítulo */
+        }
+
+        @keyframes colorChange {
+            0% { color: #9933ff; } /* Purple */
+            25% { color: #6600cc; } /* Darker Purple */
+            50% { color: #9933ff; } /* Purple */
+            75% { color: #6600cc; } /* Darker Purple */
+            100% { color: #9933ff; } /* Purple */
+        }
+
+        .section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .features, .testimonials, .technical-details, .faq {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .feature, .testimonial, .technical-detail, .faq-item {
+            width: 45%;
+            margin: 10px 0;
+            padding: 20px;
+            border: 1px solid #9933ff; /* Purple */
+            border-radius: 5px;
+            background-color: rgba(0, 0, 102, 0.9); /* Dark Blue */
+            color: #fff;
+        }
+
+        .cta {
+            background-color: rgba(0, 0, 102, 0.9); /* Dark Blue */
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #9933ff; /* Purple */
+            animation: colorChange 3s infinite; /* Añadir animación al CTA */
+        }
+
+        .cta p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .cta form {
+            display: inline-block;
+        }
+
+        .cta input[type="email"] {
+            padding: 10px;
+            font-size: 1em;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .cta button {
+            background-color: #9933ff; /* Purple */
+            color: #000033; /* Dark Blue */
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta button:hover {
+            background-color: #6600cc; /* Darker Purple */
+            color: #fff;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: #9933ff; /* Purple */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <header class="header">
+        <img src="https://github.com/ibollaneza/genius-ai/blob/745dad2569a13be3ef1016b050d1031448dd9feb/u3462134296_A_futuristic_digital_landscape_with_a_glowing_hum_c2e4ed63-14f7-439f-a02f-cf954080ae0a_3.png?raw=true" alt="BrainAI Logo">
+        <div class="header-content">
+            <h1>BrainAI</h1>
+            <nav class="navigation">
+                <a href="#learn-more">Learn More</a>
+                <a href="#technical-details">Technical Details</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#faq">FAQ</a>
+                <a href="#cta">Sign Up</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="learn-more" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Why BrainAI?</h2>
+            <p>BrainAI is a revolutionary new artificial intelligence that can help you achieve more in less time. Whether you're looking to automate tasks, gain insights from data, or simply make your life easier, BrainAI is here to help.</p>
+            <div class="features">
+                <div class="feature" data-aos="fade-up">
+                    <h3>Automate Repetitive Tasks</h3>
+                    <p>BrainAI can take over those mundane tasks that eat up your time, allowing you to focus on what really matters.</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Analyze Data with Ease</h3>
+                    <p>With BrainAI, you can effortlessly analyze large sets of data and get actionable insights quickly.</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Personalized Recommendations</h3>
+                    <p>Using advanced algorithms, BrainAI provides personalized recommendations tailored to your needs.</p>
+                </div>
+                <div class="feature" data-aos="fade-up" data-aos-delay="300">
+                    <h3>24/7 Availability</h3>
+                    <p>BrainAI is always available to assist you, no matter the time of day or night.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="technical-details" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Technical Details</h2>
+            <p>Discover the cutting-edge technology that powers BrainAI.</p>
+            <div class="technical-details">
+                <div class="technical-detail" data-aos="fade-up">
+                    <h3>Advanced Machine Learning</h3>
+                    <p>BrainAI utilizes state-of-the-art machine learning algorithms to provide accurate and reliable results.</p>
+                </div>
+                <div class="technical-detail" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Scalable Architecture</h3>
+                    <p>Our scalable architecture ensures that BrainAI can handle large volumes of data and users simultaneously.</p>
+                </div>
+                <div class="technical-detail" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Robust Security</h3>
+                    <p>Security is our top priority. BrainAI employs advanced security measures to protect your data.</p>
+                </div>
+                <div class="technical-detail" data-aos="fade-up" data-aos-delay="300">
+                    <h3>User-Friendly Interface</h3>
+                    <p>BrainAI features a user-friendly interface that makes it easy for anyone to use, regardless of technical expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonials">
+                <div class="testimonial" data-aos="fade-up">
+                    <p>"BrainAI has transformed the way I work. I'm now able to get so much more done in a fraction of the time!" - Alex Johnson</p>
+                </div>
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+                    <p>"The data analysis capabilities of BrainAI are incredible. It has made my decision-making process so much easier." - Maria Rodriguez</p>
+                </div>
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
+                    <p>"I love how BrainAI can handle all the repetitive tasks for me. It's like having a personal assistant available 24/7." - John Smith</p>
+                </div>
+                <div class="testimonial" data-aos="fade-up" data-aos-delay="300">
+                    <p>"The personalized recommendations from BrainAI have been spot on. It really understands my needs." - Emily Davis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section" data-aos="fade-up">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about BrainAI.</p>
+            <div class="faq">
+                <div class="faq-item" data-aos="fade-up">
+                    <h3>What is BrainAI?</h3>
+                    <p>BrainAI is a cutting-edge artificial intelligence designed to help you automate tasks, analyze data, and provide personalized recommendations.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>How can I get started with BrainAI?</h3>
+                    <p>You can sign up for updates and be the first to know when BrainAI launches. Simply enter your email in the sign-up form below.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Is my data secure with BrainAI?</h3>
+                    <p>Yes, security is our top priority. We use advanced security measures to ensure that your data is protected at all times.</p>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <h3>What kind of tasks can BrainAI automate?</h3>
+                    <p>BrainAI can automate a wide range of tasks, including data entry, email responses, scheduling, and much more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta" data-aos="fade-up">
+        <div class="container">
+            <h2>Get Ready for BrainAI</h2>
+            <p>Sign up now to be the first to know when BrainAI launches!</p>
+            <form id="signup-form">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+            <p id="signup-message"></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 BrainAI. All rights reserved.</p>
+            <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const messageElement = document.getElementById('signup-message');
+            
+            if (email) {
+                messageElement.textContent = 'Thank you for signing up! We will notify you when BrainAI launches.';
+                messageElement.style.color = 'green';
+            } else {
+                messageElement.textContent = 'Please enter a valid email address.';
+                messageElement.style.color = 'red';
+            }
+        });
+
+        // Inicializa AOS
+        AOS.init();
+    </script>
+</body>
+</html>
